@@ -7,6 +7,13 @@ class player {
         // whenever new player push it in to objects array so that it can then be drawn
         objects.push(this);
     }
+    // for every object in loop that has the step event(only player) assign x and y to the mousemovement 
+    step() {
+        // this.x = mouseX;
+        // this.y = mouseY;
+        // if we press W then go up 64 on each press
+        if (keyPress.W) this.y += 64
+    }
 
     draw() {
         // to move player on the y axis -test

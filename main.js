@@ -37,10 +37,12 @@ var Player = new player(50, 50)
 
 
 
-// game loop
+// game loop 
 function loop() {
     stepLoop();
     drawLoop();
+    // for each frame make sure key press goes back to false
+    keyEnd();
 }
 
 ////
