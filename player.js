@@ -12,7 +12,7 @@ class player {
         // this.x = mouseX;
         // this.y = mouseY;
         // if we press W then go up 64 on each press
-        if (keyPress.W) this.y += 64
+        if (keyDown.W) this.y += 4
     }
 
     draw() {

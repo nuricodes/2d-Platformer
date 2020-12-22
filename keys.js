@@ -17,7 +17,14 @@ document.onmousemove = function (e) {
 // so when you press a button at that frame its true but as soon as it changes it's false
 var keyPress = {};
 // temporary
-var TkeyPress = {};
+var TkeyPress = {}; //switch tkpress with keydown
+// the moment/frame that your release the key
+var keyRelease = {};
+// every frame as long as I'm holding down
+var keyDown = {};
+
+
+
 // 255 keys in ascii chart
 for (let i = 0; i < 255; i++) {
     // turns a number into a letter
@@ -25,21 +32,30 @@ for (let i = 0; i < 255; i++) {
     // by default keyPress is false bc by default we're not pushing anything 
     // was the letter of any for keys pressed? no
     keyPress[l] = false;
-    TkeyPress[l] = false;
+    keyDown[l] = false;
+    keyRelease[l] = false;
 }
 
 // 
 document.onkeypress = function (e) {
     // the key we're pressing = the upper case of the letter being pressed 
-    var key = (e.key).toUpperCase();
+    let key = (e.key).toUpperCase();
     // if there is not tkeypress clicked or if it is false
-    if (!TkeyPress[key]) {
+    if (!keyDown[key]) {
         // then on key press we will set it to true
-        TkeyPress[key] = true;
+        keyDown[key] = true;
         keyPress[key] = true;
     }
 }
 
+// on release key
+document.onkeyup = function (e) {
+    // redefine key
+    let key = (e.key).toUpperCase();
+    // the key that was released in the tkey object is now false making it available for click again
+    keyDown[key] = false;
+    keyRelease[key] = true;
+}
 
 // turn off key press once key is pressed --make sure to call this in the game loop
 function keyEnd() {
@@ -47,13 +63,12 @@ function keyEnd() {
     for (var i in keyPress) {
         // make sure that iteration in the key press object is false
         keyPress[i] = false;
+        keyRelease[i] = false;
     }
 }
 
 
 
 
-// every frame as long as I'm holding down
-var keyDown = {};
-// the moment/frame that your release the key
-var keyRelease = {};
+
+// *challenge you can skill all of the objects above and just do keydown
