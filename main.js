@@ -20,13 +20,22 @@ window.onresize = function () {
     canvas.height = height;
     // to keep screen from flickering on resize call loop in resize function on call drawLoop
     drawLoop();
-
 }
 
 // array for all the objects we may have in the gam ie trees? hills?
 var objects = [];
+// create a bunch of walls make a create event
+for (let i = 0; i < 32; i++) {
+    new wall(i * 32, 400);
+}
+
+window.onresize();
+
 // create a player with new instance of play.js
 var Player = new player(50, 50)
+
+
+
 
 // game loop
 function loop() {
@@ -43,7 +52,7 @@ function stepLoop() {
     // instead of going through all the objects created by hand, we'll loop through instead
     for (let i = 0; i < objects.length; i++) {
         // if object has step event then call step event
-        if (objects[i].draw()) objects[i].draw()
+        if (objects[i].step) objects[i].step()
     }
 }
 // 2. function draw loop for what's being drawn
@@ -52,9 +61,8 @@ function drawLoop() {
     // instead of going through all the objects created by hand, we'll loop through instead
     for (let i = 0; i < objects.length; i++) {
         // if object has draw event then call draw event
-        if (objects[i].draw()) objects[i].draw()
+        if (objects[i].draw) objects[i].draw()
     }
-    Player.draw();
 }
 
 
@@ -63,5 +71,5 @@ var target_fps = 30;
 // function will happen every 1sec/fps defined above
 setInterval(loop, 1000 / target_fps);
 
-window.onresize();
+
 

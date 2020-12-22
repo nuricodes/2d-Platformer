@@ -1,20 +1,22 @@
-class player {
-    // what happens as soon as you create player x & y is where p is on axis
+var walls = [];
+
+// create a wall class with the same properties as square
+class wall {
     constructor(x, y) {
         this.x = x;
         this.y = y;
         this.size = 32;
-        // whenever new player push it in to objects array so that it can then be drawn
+        // push this wall object to our objects array
         objects.push(this);
+        walls.push(this);
     }
 
+    // sets up wall object to be drawn when called and chained
     draw() {
-        // to move player on the y axis -test
-        // this.y += 5;
         // we're going to draw a square
         strokeColor(255, 255, 255);
         noFill();
+        strokeSize(2)
         rectangle(this.x, this.y, this.size, this.size);
     }
 }
-
