@@ -30,6 +30,7 @@ for (let i = 0; i < 32; i++) {
     new wall(i * 32, 832);
     new wall(i * 32, 864);
 }
+new wall(15 * 32, 800 - 32)
 
 // create a player with new instance of play.js
 var Player = new player(50, 50)

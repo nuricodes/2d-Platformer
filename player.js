@@ -10,6 +10,8 @@ class player {
         // physics
         this.gravity = 7;
         this.yspd = 0;
+        // jump speed
+        this.jspd = 30;
         // max speed
         this.mspd = 10;
         this.xspd = 0;
@@ -30,9 +32,12 @@ class player {
         var ground = wallCollision(this.bbx, this.x, this.y + 1);
 
         // if we press W and player is on the ground
-        if (keyPress.W && ground) this.yspd = -20; //makes box go back up when w is pressed
+        if (keyPress.W && ground) this.yspd = -this.jspd//-30; //makes box go back up when w is pressed
         // but if we keep touching the space button player can go infinitely up...let's fix this
 
+        /////////////////////////////////
+        // COLLISION-horizontal collision
+        /////////////////////////////////
         // if the position that we are going to be at is colliding with a wall then we will set our y speed to 0
         if (wallCollision(this.bbx, this.x, this.y + this.yspd)) {
             while (!wallCollision(this.bbx, this.x, this.y + Math.sign(this.yspd))) {
@@ -49,6 +54,16 @@ class player {
         // more key movements d=direction
         let d = keyDown.D - keyDown.A;
         this.xspd = d * this.mspd;
+        //////////////////////////////////
+        // COLLISION -vertical collision (same as above but with x)
+        ////////////////////////////////////
+        // if the position that we are going to be at is colliding with a wall then we will set our y speed to 0
+        if (wallCollision(this.bbx, this.x + this.xspd, this.y)) {
+            while (!wallCollision(this.bbx, this.x + Math.sign(this.xspd), this.y)) {
+                this.x += Math.sign(this.xspd);
+            }
+            this.xspd = 0;
+        }
         this.x += this.xspd;
 
     }
