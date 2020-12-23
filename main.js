@@ -26,7 +26,9 @@ window.onresize = function () {
 var objects = [];
 // create a bunch of walls make a create event
 for (let i = 0; i < 32; i++) {
-    new wall(i * 32, 400);
+    new wall(i * 32, 800);
+    new wall(i * 32, 832);
+    new wall(i * 32, 864);
 }
 
 // create a player with new instance of play.js
