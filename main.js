@@ -29,8 +29,11 @@ for (let i = 0; i < 32; i++) {
     new wall(i * 32, 800);
     new wall(i * 32, 832);
     new wall(i * 32, 864);
+    new wall(i * 32, 896);
+    new wall(i * 32, 928);
 }
 new wall(15 * 32, 800 - 32)
+new wall(15 * 20, 800 - 32)
 
 // create a player with new instance of play.js
 var Player = new player(50, 50)
@@ -62,7 +65,7 @@ function stepLoop() {
 }
 // 2. function draw loop for what's being drawn
 function drawLoop() {
-    background(25, 25, 25)
+    background(25, 181, 254)
     // instead of going through all the objects created by hand, we'll loop through instead
     for (let i = 0; i < objects.length; i++) {
         // if object has draw event then call draw event

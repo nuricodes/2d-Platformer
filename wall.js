@@ -16,8 +16,8 @@ class wall {
     // sets up wall object to be drawn when called and chained
     draw() {
         // we're going to draw a square
-        strokeColor(255, 255, 255);
-        noFill();
+        strokeColor(126, 200, 80);
+        fillColor(126, 200, 80);
         strokeSize(2);
         // // if it's colliding with the player then it should turn red --test
         // if (this.bbx.collision(Player.bbx)) {

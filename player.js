@@ -72,8 +72,8 @@ class player {
         // to move player on the y axis -test
         // this.y += 5;
         // we're going to draw a square
-        strokeColor(255, 255, 255);
-        noFill();
+        strokeColor(240, 240, 236);
+        fillColor(240, 240, 236)
         rectangle(this.x, this.y, this.size, this.size);
         // draw the instance
         // this.bbx.draw();
