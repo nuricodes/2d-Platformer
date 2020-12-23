@@ -29,10 +29,10 @@ for (let i = 0; i < 32; i++) {
     new wall(i * 32, 400);
 }
 
-window.onresize();
-
 // create a player with new instance of play.js
 var Player = new player(50, 50)
+window.onresize();
+
 
 
 
